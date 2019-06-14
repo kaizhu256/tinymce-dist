@@ -53064,8 +53064,8 @@ var silver = (function (domGlobals) {
     var SkinLoaded = { fireSkinLoaded: fireSkinLoaded$1 };
 
     var loadSkin = function (isInline, editor) {
-      // hack - rollup
-      return;
+      //!! // hack - rollup
+      //!! return;
       var skinUrl = getSkinUrl(editor);
       var skinUiCss;
       if (skinUrl) {
