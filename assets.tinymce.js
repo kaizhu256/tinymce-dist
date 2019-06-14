@@ -4411,7 +4411,7 @@ file tinymce@5.0.7/tinymce.js
         };
         url = Tools._addCacheSuffix(url);
         // hack - rollup
-        url = "assets.tinymce-5.0.7.min.css";
+        url = "assets.tinymce-v5.0.7.min.css";
         if (!loadedStates[url]) {
           state = {
             passed: [],
