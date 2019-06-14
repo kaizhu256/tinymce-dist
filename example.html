@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="assets.tinymce-v5.0.7.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -58,7 +59,7 @@
     </p>
 </textarea>
 </form>
-<script src="assets.tinymce.js"></script>
+<script src="assets.tinymce-v5.0.7.min.js"></script>
 <script>
 /* jslint utility2:true */
 (function () {
@@ -67,14 +68,14 @@
         //!! plugins: "image lists powerpaste",
         //!! plugins: "image",
         selector: "#mytextarea",
-        setup: function (editor) {
-            editor.on("init", function () {
-                var elem;
-                elem = document.createElement("link");
-                elem.href = "assets.tinymce-v5.0.7.min.css";
-                editor.contentDocument.head.appendChild(elem);
-            });
-        },
+        //!! setup: function (editor) {
+            //!! editor.on("init", function () {
+                //!! var elem;
+                //!! elem = document.createElement("link");
+                //!! elem.href = "assets.tinymce.css";
+                //!! editor.contentDocument.head.appendChild(elem);
+            //!! });
+        //!! },
         skin: false
     });
 }());
