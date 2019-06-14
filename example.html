@@ -2,6 +2,304 @@
 <html>
 <head>
 <link href="assets.tinymce-v5.0.7.min.css" rel="stylesheet">
+<style>
+/* jslint utility2:true */
+/*csslint
+    box-model:false,
+    ids:false,
+    important:false,
+*/
+/* csslint ignore:start */
+*,
+*:after,
+*:before {
+    border-radius: 0 !important;
+    box-sizing: border-box;
+    outline: none !important;
+}
+*.disabled {
+    cursor: not-allowed !important;
+    opacity: 0.66;
+}
+body {
+    -moz-user-select: none;
+}
+/* csslint ignore:end */
+
+
+
+/* validateLineSortedReset */
+@media (min-width: 0) {
+    .modal-dialog {
+        margin: 30px auto;
+        width: 500px;
+    }
+}
+a,
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+body {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    white-space: nowrap;
+}
+button,
+input,
+label,
+select {
+    height: 20px;
+    margin: 0;
+}
+button {
+    background: #ccc;
+    border: 0;
+    padding: 2px 5px;
+}
+button:hover {
+    background: #bbb !important;
+}
+code,
+pre,
+textarea,
+.code {
+    font-family: Consolas, Menlo, monospace;
+    font-size: 10px;
+}
+input,
+label,
+select {
+    margin: 0;
+}
+input {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+ul {
+    list-style-type: none;
+}
+.colorError {
+    color: #d00;
+}
+.modal-body {
+    background: #eee;
+    padding-top: 0;
+}
+.modal-body input,
+.modal-body select {
+    width: 100%;
+}
+.modal-body > div {
+    line-height: 20px;
+    padding-top: 15px;
+}
+.modal-content {
+    box-shadow: 0 5px 15px rgba(0,0,0,.5)
+}
+.modal-footer {
+    background: #eee;
+    border: 0;
+    padding-top: 0;
+}
+.modal-footer button:nth-child(2) {
+    margin-left: 15px;
+}
+.modal-header {
+    background-image: url("favicon.png");
+    background-position: 5px 5px;
+    background-repeat: no-repeat;
+    background-size: 17px;
+    border: 0;
+    display: flex;
+    font-size: 12px;
+    padding: 6px 8px 4px 30px;
+}
+.modal-header a {
+    height: 15px;
+    text-align: center;
+    width: 15px;
+}
+.modal-header a:hover {
+    background: #ddd;
+}
+.modal-header .title {
+    flex: auto;
+}
+.styleDisplayFlex {
+    display: flex;
+}
+.styleDisplayFlexColumn {
+    display: flex;
+    flex-flow: column;
+}
+.styleFlex1 {
+    flex: 1;
+}
+.tox .tox-collection__item-label {
+    font-size: 12px;
+}
+.tox .tox-toolbar,
+.tox .tox-toolbar__overflow,
+.tox .tox-toolbar__primary {
+    background: url("data:image/svg+xml;charset=utf8,%3Csvg height='29px' viewBox='0 0 40 39px' width='40' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='28px' width='100' height='1' fill='%23cccccc'/%3E%3C/svg%3E") left 0 top 0 #fff;
+}
+.tox-toolbar .tox-split-button__chevron {
+    width: 10px;
+}
+.tox-toolbar .tox-tbtn {
+    font-size: 12px;
+    height: 24px;
+    width: 24px;
+}
+.tox-toolbar .tox-tbtn[aria-label="Font sizes"] {
+    width: 60px;
+}
+.tox-toolbar .tox-tbtn[aria-label="Fonts"] {
+    width: 100px;
+}
+#borderResize1 {
+    background: #eee;
+    padding: 1px;
+}
+#contextmenu1 {
+    display: none;
+    font-size: 11px;
+    position: fixed;
+    top: 0;
+    z-index: 99;
+}
+#contextmenu1 a:hover {
+    background: #37b;
+    color: #fff;
+}
+#navbar1 {
+    background: #eee;
+    padding: 5px;
+}
+#navbar1 button {
+    background: transparent;
+    font-size: 15px;
+    height: 30px;
+    padding: 0;
+    width: 30px;
+}
+#navbar1 .glyphicon {
+    font-size: 15px;
+}
+#panelBody1 {
+    visibility: hidden;
+}
+#panelLetterEditor1 {
+    border: 1px inset #ddd;
+}
+#panelLetterEditor1 .tox-statusbar {
+    display: none;
+}
+#panelLetterEditor1 .tox-tinymce {
+    height: 100% !important;
+}
+#panelLetterList1 {
+    border: 1px inset #ddd;
+    overflow: auto;
+    position: relative;
+    white-space: nowrap;
+    width: 200px;
+}
+#panelLetterList1 a {
+    line-height: 14px;
+}
+#panelLetterList1 .contexted a {
+    background: #ddd;
+}
+#panelLetterList1 .glyphicon-envelope {
+    color: #07b;
+}
+#panelLetterList1 .selected a {
+    background: #37b;
+    color: #fff;
+}
+#panelLetterList1 > ul {
+    position: absolute;
+}
+#statusbar1 {
+    background: #eee;
+    display: flex;
+    line-height: 14px;
+}
+#statusbar1 > div {
+    border: 2px inset #fff;
+    overflow: hidden;
+    padding: 2px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+#statusbarDate1,
+#statusbarTime1 {
+    width: 10rem;
+}
+
+
+
+/* validateLineSortedReset */
+/* style - tree */
+/* https://jsfiddle.net/1fynun7a */
+.tree,
+.tree li {
+    padding: 0;
+}
+.tree {
+    list-style: none;
+}
+.tree li {
+    border-left: 1px solid #777;
+}
+.tree li > a:last-child {
+    padding: 2px;
+}
+.tree li:before {
+    border-bottom: 1px solid #777;
+    border-left: 1px solid #777;
+    content: "";
+    display: inline-block;
+    height: 12px;
+    left: 3px;
+    position: relative;
+    top: -4px;
+}
+.tree li:last-child {
+    border-left-color: transparent;
+}
+.tree-leaf a:first-child {
+    background: transparent;
+}
+.tree-root {
+    margin-left: -5px;
+    margin-top: -12px;
+}
+.tree-root .glyphicon {
+    font-size: 12px;
+}
+.tree-root #listLetterAll1 > li:first-child:before {
+    border-left-color: #fff;
+}
+.tree-root > li:before {
+    border: 0;
+}
+/* validateLineSortedReset */
+.tree li:before {
+    margin-left: -4px;
+    width: 10px;
+}
+.tree ul {
+    margin-left: 15px;
+}
+/* style - none */
+</style>
 </head>
 
 <body>
