@@ -305,7 +305,7 @@ ul {
 <body>
 <h1>TinyMCE Quick Start Guide</h1>
 <form method="post">
-<textarea id="mytextarea" style="height:500px;">
+<textarea id="editor1" style="height:500px;">
     <p style="text-align: center;">
         <img title="TinyMCE Logo" src="assets.glyph-tinymce-2x.png" alt="TinyMCE Logo" width="110" height="97" />
     </p>
@@ -360,21 +360,98 @@ ul {
 <script src="assets.tinymce-v5.0.7.min.js"></script>
 <script>
 /* jslint utility2:true */
-(function () {
+(function (local) {
     "use strict";
-    window.tinymce.init({
-        //!! plugins: "image lists powerpaste",
-        //!! plugins: "image",
-        selector: "#mytextarea",
-        //!! setup: function (editor) {
-            //!! editor.on("init", function () {
-                //!! var elem;
-                //!! elem = document.createElement("link");
-                //!! elem.href = "assets.tinymce.css";
-                //!! editor.contentDocument.head.appendChild(elem);
-            //!! });
+    var globalData;
+    var tinymce;
+    tinymce = globalThis.tinymce;
+    local = globalThis.utility2;
+    globalThis.local = local;
+    globalData = {};
+    globalThis.globalData = globalData;
+
+
+
+    tinymce.init({
+        automatic_uploads: true,
+        branding: false,
+        //!! file_picker_callback: function (callback) {
+            //!! var input = document.createElement("input");
+            //!! input.setAttribute("type", "file");
+            //!! input.setAttribute("accept", "image/*");
+            //!! /* Note: In modern browsers input[type="file"]
+             //!! * is functional without even adding it to the DOM,
+             //!! * but that might not be the case in some older or quirky browsers
+             //!! * like IE, so you might want to add it to the DOM just in case,
+             //!! * and visually hide it. And do not forget
+             //!! * do remove it once you do not need it anymore.
+             //!! */
+            //!! input.onchange = function () {
+                //!! var file = this.files[0];
+                //!! var reader = new FileReader();
+                //!! reader.addEventListener("load", function () {
+                //!! /* Note: Now we need to register the blob
+                 //!! * in TinyMCEs image blob registry.
+                 //!! * In the next release this part hopefully won't be necessary,
+                 //!! * as we are looking to handle it internally.
+                 //!! */
+                    //!! var id = "blobid" + Date.now();
+                    //!! var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                    //!! var base64 = reader.result.split(",")[1];
+                    //!! var blobInfo = blobCache.create(id, file, base64);
+                    //!! blobCache.add(blobInfo);
+                    //!! /* call the callback and populate the Title field
+                     //!! * with the file name
+                     //!! */
+                    //!! callback(blobInfo.blobUri(), {
+                        //!! title: file.name
+                    //!! });
+                //!! });
+                //!! reader.readAsDataURL(file);
+            //!! };
+            //!! input.click();
         //!! },
-        skin: false
+        menubar: false,
+        plugins: "image lists powerpaste",
+        selector: "#editor1",
+        setup: function (editor1) {
+            editor1.on("init", function (evt) {
+                globalData.editor1 = editor1;
+                evt.target.editorCommands.execCommand(
+                    "fontName",
+                    false,
+                    "Arial"
+                );
+                evt.target.editorCommands.execCommand(
+                    "fontSize",
+                    false,
+                    "12"
+                );
+                //!! // init evt-handling - domOnEventContextmenu
+                //!! editor1.contentWindow.eval(
+                    //!! "(function () {'use strict';"
+                    //!! + "window.local = {domOnEventContextmenu:"
+                    //!! + local.domOnEventContextmenu.toString()
+                    //!! + "};local.domOnEventContextmenu({type:'init'});"
+                    //!! + "}());"
+                //!! );
+                // render #editor1
+                if (globalData.letterSelected) {
+                    globalData.editor1.setContent(
+                        globalData.letterSelected.html
+                    );
+                }
+            });
+        },
+        toolbar: (
+            "undo redo"
+            + " | fontselect | fontsizeselect"
+            + " | bold italic underline strikethrough"
+            + " | forecolor"
+            + " | alignleft aligncenter alignright alignjustify"
+            + " | numlist bullist"
+            + " | image media"
+        )
     });
 }());
 </script>
