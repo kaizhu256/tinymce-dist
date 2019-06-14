@@ -24126,6 +24126,8 @@
       }
     };
     var loadTheme = function (scriptLoader, editor, suffix, callback) {
+      // hack - rollup
+      //!! return;
       var settings = editor.settings, theme = settings.theme;
       if (isString(theme)) {
         if (!hasSkipLoadPrefix(theme) && !ThemeManager.urls.hasOwnProperty(theme)) {
